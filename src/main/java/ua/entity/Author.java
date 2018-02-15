@@ -1,6 +1,5 @@
 package ua.entity;
 
-import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +10,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="author")
-@Data
 public class Author extends AbstractEntityId{
 
 	private String firstName;
@@ -20,4 +18,29 @@ public class Author extends AbstractEntityId{
 	
 	@OneToMany(mappedBy = "author")
 	private List<Book> books = new ArrayList<>();
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public List<Book> getBooks() {
+		return books;
+	}
+
+	public void setBooks(List<Book> books) {
+		this.books = books;
+	}
+	
 }
