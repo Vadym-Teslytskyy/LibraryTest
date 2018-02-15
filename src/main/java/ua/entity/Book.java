@@ -1,5 +1,7 @@
 package ua.entity;
 
+import lombok.Data;
+
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
@@ -9,6 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="book")
+@Data
 public class Book extends AbstractEntityId{
 
 	private String photoUrl;
@@ -26,52 +29,4 @@ public class Book extends AbstractEntityId{
 	private LocalDate releaseDate;
 	
 	private String fullDesc;
-	
-	public String getPhotoUrl() {
-		return photoUrl;
-	}
-	
-	public void setPhotoUrl(String photoUrl) {
-		this.photoUrl = photoUrl;
-	}
-	
-	public String getName() {
-		return name;
-	}
-	
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	public Genre getGenre() {
-		return genre;
-	}
-	
-	public void setGenre(Genre genre) {
-		this.genre = genre;
-	}
-	
-	public int getAvalibleCounter() {
-		return avalibleCounter;
-	}
-	
-	public void setAvalibleCounter(int avalibleCounter) {
-		this.avalibleCounter = avalibleCounter;
-	}
-	
-	public LocalDate getReleaseDate() {
-		return releaseDate;
-	}
-	
-	public void setReleaseDate(LocalDate releaseDate) {
-		this.releaseDate = releaseDate;
-	}
-	
-	public String getFullDesc() {
-		return fullDesc;
-	}
-	
-	public void setFullDesc(String fullDesc) {
-		this.fullDesc = fullDesc;
-	}
 }
