@@ -26,7 +26,7 @@ public class Book extends AbstractEntityId{
 	private LocalDate releaseDate;
 	
 	private String fullDesc;
-	
+
 	public String getPhotoUrl() {
 		return photoUrl;
 	}
