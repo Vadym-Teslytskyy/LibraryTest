@@ -4,24 +4,18 @@ import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="book")
-public class Book {
+public class Book extends AbstractEntityId{
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
-	
 	private String photoUrl;
 	
 	private String name;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Author author;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -32,14 +26,6 @@ public class Book {
 	private LocalDate releaseDate;
 	
 	private String fullDesc;
-	
-	public Integer getId() {
-		return id;
-	}
-	
-	public void setId(Integer id) {
-		this.id = id;
-	}
 	
 	public String getPhotoUrl() {
 		return photoUrl;
