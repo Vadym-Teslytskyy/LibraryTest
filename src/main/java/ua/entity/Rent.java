@@ -2,19 +2,16 @@ package ua.entity;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "rent")
 public class Rent extends AbstractEntityId{
 
+    @Column(name = "borrowing_time")
 	private LocalDateTime borrowingTime;
-	
+
+    @Column(name = "return_time", length = 20)
 	private LocalDateTime returnTime;
 	
 	@ManyToMany

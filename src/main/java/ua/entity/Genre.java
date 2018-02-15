@@ -1,9 +1,9 @@
 package ua.entity;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -11,7 +11,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name="genre")
 public class Genre extends AbstractEntityId{
-	
+
+    @Column(name = "genre_name", length = 20)
 	private String genreName;
 	
 	@OneToMany(mappedBy = "genre")

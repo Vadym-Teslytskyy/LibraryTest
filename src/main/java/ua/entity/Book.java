@@ -3,18 +3,16 @@ package ua.entity;
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "book")
 public class Book extends AbstractEntityId {
 
+    @Column(name = "photo_url")
     private String photoUrl;
 
+    @Column(name = "name", length = 40)
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -26,10 +24,13 @@ public class Book extends AbstractEntityId {
     @ManyToMany(mappedBy="borrowedBooks")
     private List<Rent> rents;
 
+    @Column(name = "available_counter")
     private int avalibleCounter;
 
+    @Column(name = "release_date")
     private LocalDate releaseDate;
 
+    @Column(name = "full_description")
     private String fullDescription;
 
 	public String getPhotoUrl() {
