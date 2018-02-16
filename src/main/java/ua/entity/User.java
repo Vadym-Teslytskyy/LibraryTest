@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -11,6 +12,12 @@ import javax.persistence.Table;
 @Table(name = "user")
 public class User extends AbstractEntityId {
 
+	@OneToMany(mappedBy = "user")
+	private List<Rent> rents;
+	
+	@ManyToMany
+	private List<Book> readedBooks;
+	
     @Column(name = "first_name", length = 20)
     private String firstName;
 
@@ -25,9 +32,6 @@ public class User extends AbstractEntityId {
 
     @Column(name = "age")
     private Integer age;
-
-    @OneToMany(mappedBy = "user")
-    private List<Rent> orders;
 
     public String getLogin() {
         return login;
@@ -69,11 +73,20 @@ public class User extends AbstractEntityId {
         this.password = password;
     }
 
-    public List<Rent> getOrders() {
-        return orders;
-    }
+	public List<Book> getReadedBooks() {
+		return readedBooks;
+	}
 
-    public void setOrders(List<Rent> orders) {
-        this.orders = orders;
-    }
+	public void setReadedBooks(List<Book> readedBooks) {
+		this.readedBooks = readedBooks;
+	}
+
+	public List<Rent> getRents() {
+		return rents;
+	}
+
+	public void setRents(List<Rent> rents) {
+		this.rents = rents;
+	}
+    
 }

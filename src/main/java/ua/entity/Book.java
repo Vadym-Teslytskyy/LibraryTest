@@ -1,6 +1,5 @@
 package ua.entity;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.*;
@@ -9,11 +8,14 @@ import javax.persistence.*;
 @Table(name = "book")
 public class Book extends AbstractEntityId {
 
-    @Column(name = "photo_url")
-    private String photoUrl;
-
-    @Column(name = "name", length = 40)
-    private String name;
+	@ManyToMany
+	@JoinTable(name="book_id_user_id",
+	joinColumns={@JoinColumn(name="book_id")},
+	inverseJoinColumns={@JoinColumn(name="user_id")})
+    private List<User> users;
+	
+    @OneToMany(mappedBy = "book")
+    private List<CopyOfBook> copiesList;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Author author;
@@ -21,14 +23,17 @@ public class Book extends AbstractEntityId {
     @ManyToOne(fetch = FetchType.LAZY)
     private Genre genre;
     
-    @ManyToMany(mappedBy="borrowedBooks")
-    private List<Rent> rents;
-
+    @Column(name = "photo_url")
+    private String photoUrl;
+    
+    @Column(name = "name", length = 40)
+    private String name;
+    
     @Column(name = "available_counter")
     private int avalibleCounter;
-
-    @Column(name = "release_date")
-    private LocalDate releaseDate;
+    
+    @Column(name = "general_counter")
+    private int generalCounter;
 
     @Column(name = "full_description")
     private String fullDescription;
@@ -73,14 +78,6 @@ public class Book extends AbstractEntityId {
 		this.avalibleCounter = avalibleCounter;
 	}
 
-	public LocalDate getReleaseDate() {
-		return releaseDate;
-	}
-
-	public void setReleaseDate(LocalDate releaseDate) {
-		this.releaseDate = releaseDate;
-	}
-
 	public String getFullDesc() {
 		return fullDescription;
 	}
@@ -88,8 +85,37 @@ public class Book extends AbstractEntityId {
 	public void setFullDesc(String fullDesc) {
 		this.fullDescription = fullDesc;
 	}
-    
-    
 
+	public List<CopyOfBook> getCopiesList() {
+		return copiesList;
+	}
 
+	public void setCopiesList(List<CopyOfBook> copiesList) {
+		this.copiesList = copiesList;
+	}
+
+	public String getFullDescription() {
+		return fullDescription;
+	}
+
+	public void setFullDescription(String fullDescription) {
+		this.fullDescription = fullDescription;
+	}
+
+	public int getGeneralCounter() {
+		return generalCounter;
+	}
+
+	public void setGeneralCounter(int generalCounter) {
+		this.generalCounter = generalCounter;
+	}
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+	
 }

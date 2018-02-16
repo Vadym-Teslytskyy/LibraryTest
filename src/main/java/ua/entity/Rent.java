@@ -8,18 +8,18 @@ import javax.persistence.*;
 @Table(name = "rent")
 public class Rent extends AbstractEntityId{
 
+	@ManyToMany
+	private List<CopyOfBook> borrowedCopies;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	private User user;
+	
     @Column(name = "borrowing_time")
 	private LocalDateTime borrowingTime;
 
     @Column(name = "return_time", length = 20)
 	private LocalDateTime returnTime;
 	
-	@ManyToMany
-	private List<Book> borrowedBooks;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	private User user;
-
 	public LocalDateTime getBorrowingTime() {
 		return borrowingTime;
 	}
@@ -36,14 +36,6 @@ public class Rent extends AbstractEntityId{
 		this.returnTime = returnTime;
 	}
 
-	public List<Book> getBorrowedBooks() {
-		return borrowedBooks;
-	}
-
-	public void setBorrowedBooks(List<Book> borrowedBooks) {
-		this.borrowedBooks = borrowedBooks;
-	}
-
 	public User getUser() {
 		return user;
 	}
@@ -51,6 +43,14 @@ public class Rent extends AbstractEntityId{
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
+
+	public List<CopyOfBook> getBorrowedCopies() {
+		return borrowedCopies;
+	}
+
+	public void setBorrowedCopies(List<CopyOfBook> borrowedCopies) {
+		this.borrowedCopies = borrowedCopies;
+	}
+
 	
 }

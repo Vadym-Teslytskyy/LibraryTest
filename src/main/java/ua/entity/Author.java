@@ -12,14 +12,14 @@ import javax.persistence.Table;
 @Table(name="author")
 public class Author extends AbstractEntityId{
 
+	@OneToMany(mappedBy = "author")
+	private List<Book> books = new ArrayList<>();
+	
 	@Column(name = "first_name", length = 20)
 	private String firstName;
 
 	@Column(name = "last_name", length = 20)
 	private String lastName;
-	
-	@OneToMany(mappedBy = "author")
-	private List<Book> books = new ArrayList<>();
 
 	public String getFirstName() {
 		return firstName;

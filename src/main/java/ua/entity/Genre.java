@@ -12,12 +12,12 @@ import javax.persistence.Table;
 @Table(name="genre")
 public class Genre extends AbstractEntityId{
 
+	@OneToMany(mappedBy = "genre")
+	private List<Book> books = new ArrayList<>();
+	
     @Column(name = "genre_name", length = 20)
 	private String genreName;
 	
-	@OneToMany(mappedBy = "genre")
-	private List<Book> books = new ArrayList<>();
-
 	public String getGenreName() {
 		return genreName;
 	}
