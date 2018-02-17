@@ -98,5 +98,10 @@ public class Client extends AbstractEntityId {
 	public void setRents(List<Rent> rents) {
 		this.rents = rents;
 	}
+
+    @Override
+    public String toString() {
+        return String.format("%s %s", getFirstName(), getLastName());
+    }
     
 }
