@@ -9,8 +9,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "user")
-public class User extends AbstractEntityId {
+@Table(name = "client")
+public class Client extends AbstractEntityId {
 
 	@OneToMany(mappedBy = "user")
 	private List<Rent> rents;

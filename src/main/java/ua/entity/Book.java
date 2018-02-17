@@ -12,7 +12,7 @@ public class Book extends AbstractEntityId {
 	@JoinTable(name="book_id_user_id",
 	joinColumns={@JoinColumn(name="book_id")},
 	inverseJoinColumns={@JoinColumn(name="user_id")})
-    private List<User> users;
+    private List<Client> users;
 	
     @OneToMany(mappedBy = "book")
     private List<CopyOfBook> copiesList;
@@ -110,11 +110,11 @@ public class Book extends AbstractEntityId {
 		this.generalCounter = generalCounter;
 	}
 
-	public List<User> getUsers() {
+	public List<Client> getUsers() {
 		return users;
 	}
 
-	public void setUsers(List<User> users) {
+	public void setUsers(List<Client> users) {
 		this.users = users;
 	}
 	

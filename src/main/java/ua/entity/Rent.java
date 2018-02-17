@@ -1,18 +1,17 @@
 package ua.entity;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "rent")
 public class Rent extends AbstractEntityId{
 
-	@ManyToMany
-	private List<CopyOfBook> borrowedCopies;
+	@OneToOne
+	private CopyOfBook copyOfBook;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	private User user;
+	private Client user;
 	
     @Column(name = "borrowing_time")
 	private LocalDateTime borrowingTime;
@@ -36,20 +35,20 @@ public class Rent extends AbstractEntityId{
 		this.returnTime = returnTime;
 	}
 
-	public User getUser() {
+	public Client getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(Client user) {
 		this.user = user;
 	}
 
-	public List<CopyOfBook> getBorrowedCopies() {
-		return borrowedCopies;
+	public CopyOfBook getCopyOfBook() {
+		return copyOfBook;
 	}
 
-	public void setBorrowedCopies(List<CopyOfBook> borrowedCopies) {
-		this.borrowedCopies = borrowedCopies;
+	public void setCopyOfBook(CopyOfBook copyOfBook) {
+		this.copyOfBook = copyOfBook;
 	}
 
 	

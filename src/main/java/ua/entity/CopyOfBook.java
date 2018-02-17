@@ -1,13 +1,12 @@
 package ua.entity;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,8 +16,8 @@ public class CopyOfBook extends AbstractEntityId{
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Book book;
 	
-	@ManyToMany(mappedBy="borrowedCopies")
-    private List<Rent> rents;
+	@OneToOne(mappedBy="copyOfBook")
+    private Rent rent;
 	
 	@Column(name = "release_date")
     private LocalDate releaseDate;
@@ -50,14 +49,12 @@ public class CopyOfBook extends AbstractEntityId{
 		this.book = book;
 	}
 
-	public List<Rent> getRents() {
-		return rents;
+	public Rent getRent() {
+		return rent;
 	}
 
-	public void setRents(List<Rent> rents) {
-		this.rents = rents;
+	public void setRent(Rent rent) {
+		this.rent = rent;
 	}
-	
-	
-	
+
 }
