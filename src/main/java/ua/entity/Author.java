@@ -59,7 +59,7 @@ public class Author extends AbstractEntityId {
 
     @Override
     public String toString() {
-        return String.format("Author - %s %s, Cooperation book %s", getFirstName(), getLastName(), getFirstName(), collaborationBooks);
+        return String.format("%s %s", getFirstName(), getLastName());
     }
 
 }

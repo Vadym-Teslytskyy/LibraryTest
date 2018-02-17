@@ -131,6 +131,6 @@ public class Book extends AbstractEntityId {
 
     @Override
     public String toString() {
-        return String.format("Book name - %s by %s %s\nGenre - %s, available number - %s\n authors %s", getName(), getMainAuthor().getFirstName(), getMainAuthor().getLastName(), getGenre().getGenreName(), getAvalibleCounter(), collaborationAuthors);
+        return String.format("Book name - %s by %s %s\nGenre - %s, available number - %s\n coauthors %s", getName(), getMainAuthor().getFirstName(), getMainAuthor().getLastName(), getGenre().getGenreName(), getAvalibleCounter(), collaborationAuthors);
     }
 }
