@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -12,8 +13,11 @@ import javax.persistence.Table;
 @Table(name="author")
 public class Author extends AbstractEntityId{
 
-	@OneToMany(mappedBy = "author")
-	private List<Book> books = new ArrayList<>();
+	@OneToMany(mappedBy = "mainAuthor")
+	private List<Book> ownBooks = new ArrayList<>();
+	
+	@ManyToMany(mappedBy = "collaborationAuthors")
+	private List<Book> collaborationBooks;
 	
 	@Column(name = "first_name", length = 20)
 	private String firstName;
@@ -37,12 +41,20 @@ public class Author extends AbstractEntityId{
 		this.lastName = lastName;
 	}
 
-	public List<Book> getBooks() {
-		return books;
+	public List<Book> getOwnBooks() {
+		return ownBooks;
 	}
 
-	public void setBooks(List<Book> books) {
-		this.books = books;
+	public void setOwnBooks(List<Book> ownBooks) {
+		this.ownBooks = ownBooks;
+	}
+
+	public List<Book> getCollaborationBooks() {
+		return collaborationBooks;
+	}
+
+	public void setCollaborationBooks(List<Book> collaborationBooks) {
+		this.collaborationBooks = collaborationBooks;
 	}
 	
 }

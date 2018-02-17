@@ -18,7 +18,10 @@ public class Book extends AbstractEntityId {
     private List<CopyOfBook> copiesList;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Author author;
+    private Author mainAuthor;
+    
+    @ManyToMany
+    private List<Author> collaborationAuthors;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Genre genre;
@@ -52,14 +55,6 @@ public class Book extends AbstractEntityId {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public Author getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(Author author) {
-		this.author = author;
 	}
 
 	public Genre getGenre() {
@@ -117,5 +112,21 @@ public class Book extends AbstractEntityId {
 	public void setUsers(List<Client> users) {
 		this.users = users;
 	}
-	
+
+	public Author getMainAuthor() {
+		return mainAuthor;
+	}
+
+	public void setMainAuthor(Author mainAuthor) {
+		this.mainAuthor = mainAuthor;
+	}
+
+	public List<Author> getCollaborationAuthors() {
+		return collaborationAuthors;
+	}
+
+	public void setCollaborationAuthors(List<Author> collaborationAuthors) {
+		this.collaborationAuthors = collaborationAuthors;
+	}
+
 }
