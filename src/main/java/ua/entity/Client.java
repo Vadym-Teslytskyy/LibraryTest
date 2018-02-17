@@ -101,7 +101,7 @@ public class Client extends AbstractEntityId {
 
     @Override
     public String toString() {
-        return String.format("Client: %s %s\nlogin: %s\nage: ", getFirstName(), getLastName(), getLogin(), getAge());
+        return String.format("Client: %s %s\nlogin: %s\nage: %s", getFirstName(), getLastName(), getLogin(), getAge());
     }
 
 }
