@@ -13,12 +13,12 @@ import javax.persistence.Table;
 @Table(name = "client")
 public class Client extends AbstractEntityId {
 
-	@OneToMany(mappedBy = "user")
-	private List<Rent> rents;
-	
-	@ManyToMany
-	private List<Book> readedBooks;
-	
+    @OneToMany(mappedBy = "user")
+    private List<Rent> rents;
+
+    @ManyToMany
+    private List<Book> readedBooks;
+
     @Column(name = "first_name", length = 20)
     private String firstName;
 
@@ -83,25 +83,25 @@ public class Client extends AbstractEntityId {
         this.password = password;
     }
 
-	public List<Book> getReadedBooks() {
-		return readedBooks;
-	}
+    public List<Book> getReadedBooks() {
+        return readedBooks;
+    }
 
-	public void setReadedBooks(List<Book> readedBooks) {
-		this.readedBooks = readedBooks;
-	}
+    public void setReadedBooks(List<Book> readedBooks) {
+        this.readedBooks = readedBooks;
+    }
 
-	public List<Rent> getRents() {
-		return rents;
-	}
+    public List<Rent> getRents() {
+        return rents;
+    }
 
-	public void setRents(List<Rent> rents) {
-		this.rents = rents;
-	}
+    public void setRents(List<Rent> rents) {
+        this.rents = rents;
+    }
 
     @Override
     public String toString() {
-        return String.format("%s %s", getFirstName(), getLastName());
+        return String.format("Client: %s %s\nlogin: %s\nage: ", getFirstName(), getLastName(), getLogin(), getAge());
     }
-    
+
 }
