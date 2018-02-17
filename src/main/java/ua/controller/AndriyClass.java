@@ -18,7 +18,4 @@ public class AndriyClass {
     public static void main(String[] args) {
         clientStatistic();
     }
-
-
-
 }

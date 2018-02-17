@@ -9,30 +9,30 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="genre")
-public class Genre extends AbstractEntityId{
+@Table(name = "genre")
+public class Genre extends AbstractEntityId {
 
-	@OneToMany(mappedBy = "genre")
-	private List<Book> books = new ArrayList<>();
-	
+    @OneToMany(mappedBy = "genre")
+    private List<Book> books = new ArrayList<>();
+
     @Column(name = "genre_name", length = 20)
-	private String genreName;
-	
-	public String getGenreName() {
-		return genreName;
-	}
+    private String genreName;
 
-	public void setGenreName(String genreName) {
-		this.genreName = genreName;
-	}
+    public String getGenreName() {
+        return genreName;
+    }
 
-	public List<Book> getBooks() {
-		return books;
-	}
+    public void setGenreName(String genreName) {
+        this.genreName = genreName;
+    }
 
-	public void setBooks(List<Book> books) {
-		this.books = books;
-	}
+    public List<Book> getBooks() {
+        return books;
+    }
 
-	
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
+
+
 }

@@ -1,68 +1,66 @@
 package ua.model.view;
 
 public class BookIndexView {
-	
-	private Integer id;
-	
-	private String photoUrl;
-	
-	private String bookName;
-	
-	private String author;
-	
-	private String genre;
-	
-	private int avalibleCounter;
-	
-	public Integer getId() {
-		return id;
-	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    private Integer id;
 
-	public String getPhotoUrl() {
-		return photoUrl;
-	}
+    private String photoUrl;
 
-	public void setPhotoUrl(String photoUrl) {
-		this.photoUrl = photoUrl;
-	}
+    private String bookName;
 
-	public String getBookName() {
-		return bookName;
-	}
+    private String author;
 
-	public void setBookName(String bookName) {
-		this.bookName = bookName;
-	}
+    private String genre;
 
-	public String getAuthor() {
-		return author;
-	}
+    private int avalibleCounter;
 
-	public void setAuthor(String author) {
-		this.author = author;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public String getGenre() {
-		return genre;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setGenre(String genre) {
-		this.genre = genre;
-	}
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
 
-	public int getAvalibleCounter() {
-		return avalibleCounter;
-	}
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
+    }
 
-	public void setAvalibleCounter(int avalibleCounter) {
-		this.avalibleCounter = avalibleCounter;
-	}
+    public String getBookName() {
+        return bookName;
+    }
 
-	
-	
-	
+    public void setBookName(String bookName) {
+        this.bookName = bookName;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public int getAvalibleCounter() {
+        return avalibleCounter;
+    }
+
+    public void setAvalibleCounter(int avalibleCounter) {
+        this.avalibleCounter = avalibleCounter;
+    }
+
+
 }
