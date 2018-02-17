@@ -13,12 +13,12 @@ import javax.persistence.Table;
 @Table(name = "client")
 public class Client extends AbstractEntityId {
 
-    @OneToMany(mappedBy = "user")
-    private List<Rent> rents;
-
-    @ManyToMany
-    private List<Book> readedBooks;
-
+	@OneToMany(mappedBy = "user")
+	private List<Rent> rents;
+	
+	@ManyToMany
+	private List<Book> readedBooks;
+	
     @Column(name = "first_name", length = 20)
     private String firstName;
 
@@ -37,7 +37,7 @@ public class Client extends AbstractEntityId {
     @Column(name = "registration_date")
     private LocalDate registrationDate;
 
-    @Column(name = "phone_ number")
+    @Column(name = "phone_number")
     private String phoneNumber;
 
     @Column(name = "home_address")
@@ -83,43 +83,20 @@ public class Client extends AbstractEntityId {
         this.password = password;
     }
 
-    public List<Book> getReadedBooks() {
-        return readedBooks;
-    }
+	public List<Book> getReadedBooks() {
+		return readedBooks;
+	}
 
-    public void setReadedBooks(List<Book> readedBooks) {
-        this.readedBooks = readedBooks;
-    }
+	public void setReadedBooks(List<Book> readedBooks) {
+		this.readedBooks = readedBooks;
+	}
 
-    public List<Rent> getRents() {
-        return rents;
-    }
+	public List<Rent> getRents() {
+		return rents;
+	}
 
-    public void setRents(List<Rent> rents) {
-        this.rents = rents;
-    }
-
-    public String getHomeAddress() {
-        return homeAddress;
-    }
-
-    public void setHomeAddress(String homeAddress) {
-        this.homeAddress = homeAddress;
-    }
-
-    public LocalDate getRegistrationDate() {
-        return registrationDate;
-    }
-
-    public void setRegistrationDate(LocalDate registrationDate) {
-        this.registrationDate = registrationDate;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
+	public void setRents(List<Rent> rents) {
+		this.rents = rents;
+	}
+    
 }
