@@ -1,5 +1,6 @@
 package ua.entity;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -32,6 +33,15 @@ public class Client extends AbstractEntityId {
 
     @Column(name = "age")
     private Integer age;
+
+    @Column(name = "registration_date")
+    private LocalDate registrationDate;
+
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
+    @Column(name = "home_address")
+    private String homeAddress;
 
     public String getLogin() {
         return login;

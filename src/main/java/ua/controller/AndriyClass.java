@@ -22,6 +22,7 @@ public class AndriyClass {
         System.out.println(books);
     }
 
+
     public static boolean isTheBookAvailable(String bookName) {
         List books = em.createQuery("select b from Book b where (b.name = ?1 and avalibleCounter > 0)").setParameter(1, bookName).getResultList();
         return !books.isEmpty();

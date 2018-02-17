@@ -3,87 +3,87 @@ package ua.model.view;
 import java.time.LocalDate;
 
 public class BookView {
-	
-	private Integer id;
-	
-	private String photoUrl;
-	
-	private String name;
-	
-	private String author;
-	
-	private String genre;
-	
-	private int avalibleCounter;
-	
-	private LocalDate releaseDate;
-	
-	private String fullDesc;
-	
 
-	public Integer getId() {
-		return id;
-	}
+    private Integer id;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    private String photoUrl;
 
-	public String getPhotoUrl() {
-		return photoUrl;
-	}
+    private String name;
 
-	public void setPhotoUrl(String photoUrl) {
-		this.photoUrl = photoUrl;
-	}
+    private String author;
 
-	public String getName() {
-		return name;
-	}
+    private String genre;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    private int avalibleCounter;
 
-	public String getAuthor() {
-		return author;
-	}
+    private LocalDate releaseDate;
 
-	public void setAuthor(String author) {
-		this.author = author;
-	}
+    private String fullDesc;
 
-	public String getGenre() {
-		return genre;
-	}
 
-	public void setGenre(String genre) {
-		this.genre = genre;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public int getAvalibleCounter() {
-		return avalibleCounter;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setAvalibleCounter(int avalibleCounter) {
-		this.avalibleCounter = avalibleCounter;
-	}
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
 
-	public LocalDate getReleaseDate() {
-		return releaseDate;
-	}
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
+    }
 
-	public void setReleaseDate(LocalDate releaseDate) {
-		this.releaseDate = releaseDate;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getFullDesc() {
-		return fullDesc;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setFullDesc(String fullDesc) {
-		this.fullDesc = fullDesc;
-	}
+    public String getAuthor() {
+        return author;
+    }
 
-	
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public int getAvalibleCounter() {
+        return avalibleCounter;
+    }
+
+    public void setAvalibleCounter(int avalibleCounter) {
+        this.avalibleCounter = avalibleCounter;
+    }
+
+    public LocalDate getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(LocalDate releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public String getFullDesc() {
+        return fullDesc;
+    }
+
+    public void setFullDesc(String fullDesc) {
+        this.fullDesc = fullDesc;
+    }
+
+
 }
