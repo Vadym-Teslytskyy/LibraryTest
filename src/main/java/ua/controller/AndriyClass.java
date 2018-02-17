@@ -11,13 +11,14 @@ public class AndriyClass {
 
     public static void clientStatistic() {
         EntityManager em = EntityManagerFactoryCreator.factory.createEntityManager();
-        List books = em.createQuery("select b from Book b join b.author c where c.lastName = 'King'").getResultList();
+        List books = em.createQuery("select b from Book b join b.mainAuthor c where c.lastName = 'King'").getResultList();
         System.out.println(books);
     }
 
     public static void main(String[] args) {
         clientStatistic();
-
     }
+
+
 
 }
