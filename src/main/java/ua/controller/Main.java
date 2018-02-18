@@ -1,14 +1,23 @@
 package ua.controller;
 
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import ua.DAO.book.BookService;
+import ua.entity.Book;
+
+import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("primary");
-        factory.close();
+        BookService bookService = new BookService();
+//        Book book = new Book();
+//        book.setName("aaaaaaaaaa");
+//        book.setAvalibleCounter(544444455);
+//        bookBookService.update(book);
+        List list = bookService.findAll();
+        System.out.println(list);
+
+
     }
 
 }
