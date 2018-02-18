@@ -1,8 +1,6 @@
 package ua.controller;
 
 import ua.DAO.book.BookService;
-import ua.entity.Book;
-
 import java.util.List;
 
 public class Main {
@@ -14,9 +12,9 @@ public class Main {
 //        book.setName("aaaaaaaaaa");
 //        book.setAvalibleCounter(544444455);
 //        bookBookService.update(book);
-//        List list = bookService.findAll();
-//        System.out.println(list);
-        bookService.deleteById(17);
+        List list = bookService.findAll();
+        System.out.println(list);
+//        bookService.deleteById(17);
 
 
     }

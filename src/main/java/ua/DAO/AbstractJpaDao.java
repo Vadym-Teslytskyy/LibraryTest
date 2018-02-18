@@ -1,11 +1,8 @@
 package ua.DAO;
 
-import ua.DAO.DaoInterface;
 import ua.controller.EntityManagerFactoryCreator;
-import ua.entity.Book;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.io.Serializable;
 import java.util.List;
 
@@ -56,16 +53,21 @@ public abstract class AbstractJpaDao<T, Id extends Serializable> implements DaoI
 
     @Override
     public T findById(Id id) {
-        return getEntityManager().find(clazz, id);
+        T t = getEntityManager().find(clazz, id);
+        closeEntityManager();
+        return t;
     }
 
     public void delete(T entity) {
         getEntityManagerWithTransaction().remove(entity);
+        closeEntityManagerAndCommit();
     }
 
     @Override
     public List<T> findAll() {
-        return getEntityManager().createQuery(String.format("from %s", clazz.getName())).getResultList();
+        List list = getEntityManager().createQuery(String.format("from %s", clazz.getName())).getResultList();
+        closeEntityManager();
+        return list;
     }
 
     @Override
