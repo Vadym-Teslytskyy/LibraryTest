@@ -14,8 +14,9 @@ public class Main {
 //        book.setName("aaaaaaaaaa");
 //        book.setAvalibleCounter(544444455);
 //        bookBookService.update(book);
-        List list = bookService.findAll();
-        System.out.println(list);
+//        List list = bookService.findAll();
+//        System.out.println(list);
+        bookService.deleteById(17);
 
 
     }

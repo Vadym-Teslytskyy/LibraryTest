@@ -2,6 +2,7 @@ package ua.DAO;
 
 import ua.DAO.DaoInterface;
 import ua.controller.EntityManagerFactoryCreator;
+import ua.entity.Book;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -9,7 +10,6 @@ import java.io.Serializable;
 import java.util.List;
 
 public abstract class AbstractJpaDao<T, Id extends Serializable> implements DaoInterface<T, Id> {
-
 
     EntityManager em;
 
@@ -65,11 +65,14 @@ public abstract class AbstractJpaDao<T, Id extends Serializable> implements DaoI
 
     @Override
     public List<T> findAll() {
-        return getEntityManager().createQuery(String.format("from Book", clazz.getName())).getResultList();
+        return getEntityManager().createQuery(String.format("from %s", clazz.getName())).getResultList();
     }
 
     @Override
     public void deleteById(Id id) {
-
+        T t = getEntityManager().find(clazz, id);
+        em.getTransaction().begin();
+        em.remove(t);
+        closeEntityManagerAndCommit();
     }
 }
