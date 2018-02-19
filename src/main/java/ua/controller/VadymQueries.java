@@ -14,10 +14,11 @@ import ua.entity.Book;
 import ua.entity.Client;
 
 /**
- * Вадим - 4, 6, 7 4. Скільки книжок в бібліотеці, які видані в період
- * незалежності 6. Отримати найпопулярніші та найнепопулярніші книжки за період
+ * Вадим - 4, 6, 7
+ * 4. Скільки книжок в бібліотеці, які видані в період незалежності
+ * 6. Отримати найпопулярніші та найнепопулярніші книжки за період
  * 7. Отримати список читачів-боржників з детальною інформацією
- **/
+ */
 public class VadymQueries {
     static EntityManagerFactory factory = EntityManagerFactoryCreator.factory;
     private static final LocalDate INDEPENDENCE_DAY_DATE = LocalDate.of(1991, Month.AUGUST, 24);
@@ -44,6 +45,7 @@ public class VadymQueries {
         System.out.println(clients);
         em.close();
     }
+
     //Add values in db and check methods
     private static void task6(int periodInDays) {
         EntityManager em = factory.createEntityManager();
@@ -67,8 +69,6 @@ public class VadymQueries {
         //task7();
         task6(1);
     }
-    
-    
 
     @Override
     protected void finalize() throws Throwable {
