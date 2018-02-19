@@ -1,6 +1,5 @@
 package ua.DAO.book;
 
-import ua.DAO.AbstractJpaDao;
 import ua.entity.Book;
 
 

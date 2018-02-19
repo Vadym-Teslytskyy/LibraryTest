@@ -1,4 +1,4 @@
-package ua.DAO;
+package ua.DAO.book;
 
 import java.io.Serializable;
 import java.util.List;

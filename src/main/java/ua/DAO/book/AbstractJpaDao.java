@@ -1,7 +1,6 @@
-package ua.DAO;
+package ua.DAO.book;
 
 import ua.controller.EntityManagerFactoryCreator;
-
 import javax.persistence.EntityManager;
 import java.io.Serializable;
 import java.util.List;

@@ -75,11 +75,6 @@ public class AndriysQueries {
 //        howMuchTimeTheClientUseTheLibrary("bob");
         averageBooksTimeReading("White Eagle");
 
-//        LocalDate startDate = LocalDate.now();
-//        LocalDate andDate = startDate.minusDays(5);
-//        Period period = Period.between(andDate, startDate);
-//        Integer difference = period.getDays();
-//        System.out.println(difference);
 
     }
 
