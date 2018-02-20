@@ -11,11 +11,12 @@ public class Main {
     public static void main(String[] args) {
 
         BookRepositoryImpl bookRepository = new BookRepositoryImpl();
-        bookRepository.averageBooksTimeReading("The Blackdf Tower");
-        bookRepository.howManyTimesBookWasTakenAtAll("The Blackdf Tower");
+//        bookRepository.averageBooksTimeReading("The Blackdf Tower");
+//        bookRepository.howManyTimesBookWasTakenAtAll("The Blackdf Tower");
+        bookRepository.getBooksByCoAuthor("Stiven","King");
 
 
-/*
+/*git
         // Test code for OksanaQueries.
 
         EntityManagerFactory factory = EntityManagerFactoryCreator.factory;
