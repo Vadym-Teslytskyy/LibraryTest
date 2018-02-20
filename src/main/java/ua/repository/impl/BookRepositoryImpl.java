@@ -47,13 +47,21 @@ public class BookRepositoryImpl extends CrudRepositoryImpl<Book, Integer> implem
 
     public void howManyTimesBookWasTakenAtAll(String bookName) {
         long tookTimesAtAll = (long) getEntityManager().createQuery("select count(b.copyOfBook.id) from Rent b join b.copyOfBook c where c.book.name = ?1").setParameter(1, bookName).getSingleResult();
-        System.out.println(tookTimesAtAll);
+        if (tookTimesAtAll == 0) {
+            System.out.printf("Any of this book: %s has never been taken or you entered incorrect books name", bookName);
+        } else {
+            System.out.printf("There was taken %s books %s", tookTimesAtAll, bookName);
+        }
         closeEntityManager();
     }
 
     public void averageBooksTimeReading(String bookName) {
-        double avgBookTimeReading = (double) getEntityManager().createQuery("SELECT avg (datediff(p.returnTime,p.borrowingTime)) FROM Rent p join p.copyOfBook c where c.book.name = ?1 and p.returnTime is not null ").setParameter(1, bookName).getSingleResult();
-        System.out.printf("The average time of reading the book %s - is %s hours", bookName, avgBookTimeReading);
+        try {
+            double avgBookTimeReading = (double) getEntityManager().createQuery("SELECT avg (datediff(p.returnTime,p.borrowingTime)) FROM Rent p join p.copyOfBook c where c.book.name = ?1 and p.returnTime is not null ").setParameter(1, bookName).getSingleResult();
+            System.out.printf("The average time of reading the book %s - is %s hours", bookName, avgBookTimeReading);
+        } catch (NullPointerException e) {
+            System.out.printf("Any of this book: %s has not yet been returned or you entered incorrect books name", bookName);
+        }
         closeEntityManager();
     }
 

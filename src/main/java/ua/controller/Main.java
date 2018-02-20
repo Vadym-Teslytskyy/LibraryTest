@@ -11,7 +11,8 @@ public class Main {
     public static void main(String[] args) {
 
         BookRepositoryImpl bookRepository = new BookRepositoryImpl();
-        bookRepository.averageBooksTimeReading("The Black Tower");
+        bookRepository.averageBooksTimeReading("The Blackdf Tower");
+        bookRepository.howManyTimesBookWasTakenAtAll("The Blackdf Tower");
 
 
 /*
