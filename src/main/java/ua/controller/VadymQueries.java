@@ -1,6 +1,7 @@
 package ua.controller;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.Arrays;
 import java.util.List;
@@ -48,11 +49,13 @@ public class VadymQueries {
     private static void task6(int periodInDays) {
         EntityManager em = factory.createEntityManager();
         CriteriaBuilder cb = em.getCriteriaBuilder();
-        LocalDate startDate = LocalDate.now().minusDays(periodInDays);
+        LocalDateTime startDate = LocalDateTime.now().minusDays(periodInDays);
        
          List<Object[]> a = em.createQuery(
-                 "SELECT b, COUNT(r.id) FROM Rent r JOIN r.copyOfBook c JOIN c.book b  GROUP BY b.id ORDER BY COUNT(r.id) DESC", 
+                 "SELECT b, COUNT(r.id) FROM Rent r JOIN r.copyOfBook c JOIN c.book b WHERE r.borrowingTime BETWEEN :startDate AND :endDate GROUP BY b.id ORDER BY COUNT(r.id) DESC", 
                  Object[].class)
+                 .setParameter("startDate", startDate)
+                 .setParameter("endDate", LocalDateTime.now())
                  .setMaxResults(5)
                 .getResultList();
          a.forEach(array -> {
