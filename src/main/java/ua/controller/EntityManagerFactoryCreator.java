@@ -8,5 +8,4 @@ public class EntityManagerFactoryCreator {
 
     public static EntityManagerFactory factory = Persistence.createEntityManagerFactory("primary");
 
-
 }
