@@ -4,6 +4,9 @@ import ua.entity.Book;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -66,15 +69,20 @@ public class OksanaQueries {
      *             AND rent.borrowing_time > one_week_ago_date "2001.01.01"
      *         GROUP BY client.id)	AS temp_table;
      */
-    public void task8_3() {
-        // TODO
+    public void task8_3(int periodInDays) {
         EntityManager em = factory.createEntityManager();
-        double result = em.createQuery(
-                "SELECT  "
-                        + "FROM "
-                        + "WHERE "
-                        + "GROUP BY ", Double.class)
-                .getSingleResult();
+        LocalDate startDate = LocalDate.now().minusDays(periodInDays);
+
+        String sql = "SELECT AVG(one_client_count) " +
+                "FROM client, " +
+                "(SELECT count(rent.id) AS one_client_count " +
+                "FROM rent, client  " +
+                "WHERE rent.user_id = client.id " +
+                "AND rent.borrowing_time > '" + startDate + "' " +
+                "GROUP BY client.id) AS temp_table";
+        Query nativeQuery = em.createNativeQuery(sql);
+        BigDecimal result = (BigDecimal) nativeQuery.getSingleResult();
+
         System.out.println("Task 8.3 result: ");
         System.out.println(result);
         em.close();
@@ -88,16 +96,20 @@ public class OksanaQueries {
      *     GROUP BY book.id;
      */
     public void task9_1() {
-        // TODO
         EntityManager em = factory.createEntityManager();
         List<Object[]> resultList = em.createQuery(
-                "SELECT  "
-                        + "FROM "
-                        + "WHERE "
-                        + "GROUP BY ", Object[].class)
+                "SELECT book.name, AVG(client.age) "
+                        + "FROM Client client "
+                        + "JOIN client.readedBooks book "
+                        + "GROUP BY book.id", Object[].class)
                 .getResultList();
         System.out.println("Task 9.1 result: ");
-        System.out.println(resultList);
+        for (Object[] array : resultList) {
+            for (int i = 0; i < array.length; i++) {
+                System.out.print(array[i] + " ");
+            }
+            System.out.println();
+        }
         em.close();
     }
 
@@ -111,16 +123,20 @@ public class OksanaQueries {
      *     GROUP BY author.id;
      */
     public void task9_2() {
-        // TODO
         EntityManager em = factory.createEntityManager();
         List<Object[]> resultList = em.createQuery(
-                "SELECT  "
-                        + "FROM "
-                        + "WHERE "
-                        + "GROUP BY ", Object[].class)
+                "SELECT CONCAT(author.firstName, author.lastName), AVG(client.age)"
+                        + "FROM Client client JOIN client.readedBooks book "
+                        + "JOIN book.mainAuthor author "
+                        + "GROUP BY author.id", Object[].class)
                 .getResultList();
         System.out.println("Task 9.2 result: ");
-        System.out.println(resultList);
+        for (Object[] array : resultList) {
+            for (int i = 0; i < array.length; i++) {
+                System.out.print(array[i] + " ");
+            }
+            System.out.println();
+        }
         em.close();
     }
 
