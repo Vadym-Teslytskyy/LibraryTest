@@ -1,11 +1,13 @@
-package ua.DAO.book;
+package ua.repository.impl;
 
 import ua.controller.EntityManagerFactoryCreator;
+import ua.repository.CrudRepository;
+
 import javax.persistence.EntityManager;
 import java.io.Serializable;
 import java.util.List;
 
-public abstract class AbstractJpaDao<T, Id extends Serializable> implements DaoInterface<T, Id> {
+public class CrudRepositoryImpl<T, Id extends Serializable> implements CrudRepository<T, Id> {
 
     EntityManager em;
 
@@ -15,7 +17,7 @@ public abstract class AbstractJpaDao<T, Id extends Serializable> implements DaoI
         this.clazz = clazzToSet;
     }
 
-    public AbstractJpaDao() {
+    public CrudRepositoryImpl() {
     }
 
     public EntityManager getEntityManager() {
@@ -33,21 +35,21 @@ public abstract class AbstractJpaDao<T, Id extends Serializable> implements DaoI
         em.close();
     }
 
-    public void closeEntityManagerAndCommit() {
+    public void commitTransactionAndCloseEM() {
         em.getTransaction().commit();
         em.close();
     }
 
-
-    public void persist(T entity) {
+    @Override
+    public void save(T entity) {
         getEntityManagerWithTransaction().persist(entity);
-        closeEntityManagerAndCommit();
+        commitTransactionAndCloseEM();
     }
 
-
+    @Override
     public void update(T entity) {
         getEntityManagerWithTransaction().merge(entity);
-        closeEntityManagerAndCommit();
+        commitTransactionAndCloseEM();
     }
 
     @Override
@@ -55,11 +57,6 @@ public abstract class AbstractJpaDao<T, Id extends Serializable> implements DaoI
         T t = getEntityManager().find(clazz, id);
         closeEntityManager();
         return t;
-    }
-
-    public void delete(T entity) {
-        getEntityManagerWithTransaction().remove(entity);
-        closeEntityManagerAndCommit();
     }
 
     @Override
@@ -74,6 +71,7 @@ public abstract class AbstractJpaDao<T, Id extends Serializable> implements DaoI
         T t = getEntityManager().find(clazz, id);
         em.getTransaction().begin();
         em.remove(t);
-        closeEntityManagerAndCommit();
+        commitTransactionAndCloseEM();
     }
+
 }

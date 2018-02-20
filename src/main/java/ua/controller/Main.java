@@ -1,8 +1,9 @@
 package ua.controller;
 
-import ua.DAO.book.BookService;
-
 import javax.persistence.EntityManagerFactory;
+
+import ua.repository.impl.BookRepositoryImpl;
+
 import java.util.List;
 
 public class Main {
