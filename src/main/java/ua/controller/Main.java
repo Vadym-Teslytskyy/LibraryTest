@@ -1,7 +1,5 @@
 package ua.controller;
 
-import ua.DAO.book.BookService;
-
 import javax.persistence.EntityManagerFactory;
 import java.util.List;
 
@@ -17,8 +15,6 @@ public class Main {
 //        List list = bookService.findAll();
 //        System.out.println(list);
 //        bookService.deleteById(17);
-
-
 /*
 //        Test code for OksanaQueries.
 
